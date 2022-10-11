@@ -2,5 +2,5 @@
 Repository for WebProgramming Project, FALL 2022
 
 Erasyl Tastybai
-Aruzhan Bazarbay
+Aruzhan Bazarbai
 Binazir Salim
