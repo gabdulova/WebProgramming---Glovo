@@ -3,46 +3,101 @@
 <head>
     <title>Cart</title>
     <link rel="stylesheet" href="assets/style/main_Aru.css">
+    <link rel="stylesheet" href="./assets/style/main.css">
+    <link rel="icon" href="./assets/img/browser icon.png"> 
 </head>
 <body>
-    <div >
-        <h1 class="header">Glovo</h1>
-    </div>
+    <div class="wrapper">
+        <header>
+            <div id="header-wrapper">
+                <div class="header-left">
+                    <a href="./2.html">
+                        <img id="header-logo" src="./assets/img/logo_green.png" alt="Glovo Logo Green" >
+                    </a>
+                </div>
+                <!-- <div class="header-right">
+                    <form action="./7.html">
+                        <button type="submit" class="button-cart">Cart</button>
+                    </form>
+                </div> -->
+            </div>
+        </header>
+        <div class="page-cart-wrapper">
+            <div class="heading-wrapper">
+                <h2> <a href="javascript:history.back()"><img src="./assets/img/go_back_photo.png" alt="" width="20px"></a> Information about order</h2>
+                <h1>McDonald's</h1>
+            </div>
+            <div class="cart-wrapper">
+                <ul>
+                    <li>
+                        <div class="cart_block">
+                            <button class="button-delete" type="button">X</button>
+                                <img class="cart-image" src="./assets/img/cart_photo1.png" alt="photo of burger" >
+                            <h3>McCombo chicken teisty</h3>
+                            <p>Price: 2600 tg</p>
+                            <p>
+                            Large and delicious chicken cutlet in breadcrumbs, tender bun, tomato slices, lettuce, onion, Emmental cheese and spicy Grilled sauce. 
+                            A standard serving of crispy French Fries, a drink and a sauce of your choice.
+                            </p>
+                            <div class="edit">
+                                <button class="button-edit" type="button">-</button>
+                                <p>1</p>
+                                <button class="button-edit" type="button">+</button>
+                            </div>
+                            <!-- <button class="button-delete" type="button">X</button> -->
+                    
+                        </div>
+                    </li>
+                    <li>
+                        <div class="cart_block">
+                            <button class="button-delete" type="button">X</button>
+                                <img class="cart-image" src="./assets/img/cart_photo2.png" alt="photo of burger">
+                            <h3>McCombo Big Mac</h3>
+                            <p>Price: 2050 tg</p>
+                            <p>
+                                A delicious burger with two tender beef steaks on a special Big Mac bun with the addition of an exquisite sauce. 
+                                Also included in the Mccomb is a standard serving of French Fries, a drink and a sauce of your choice.
+                            </p>
+                            <div class="edit">
+                                <button class="button-edit" type="submit">-</button>
+                                <p >1</p>
+                                <button class="button-edit" type="submit">+</button>
+                            </div>
+                            
+                        </div>
+                    </li>
+                </ul>
+                <div>
+                    <form action="./8.html">
+                        <input type="submit" class="button-order" value="Order products for 130$">
+                            
+                    </form>
+                </div>
+            </div>
 
-    <ul>
-        <li>
-            <div class="cart_block">
-                <img src="https://images7.alphacoders.com/103/1033300.jpg" alt="photo of burger" width="200px">
-                <h3>Cheeseburger Double Junior Set</h3>
-                <p>Price: 50$</p>
-                <p>Burger with double mini-cutlet of marbled beef + French fries</p>
-                <div class="edit">
-                    <button class="button-edit" type="submit">-</button>
-                    <p class="button-edit">1</p>
-                    <button class="button-edit" type="submit">+</button>
+        </div>
+
+
+        <footer>
+            <div id="footer-wrapper">
+                <div class="footer-content footer-left">
+                    <a href="#header-wrapper">
+                        <img src="./assets/img/glovo-white.svg" alt="Glovo Logo White">
+                    </a>
                 </div>
-        
-            </div>
-        </li>
-        <li>
-            <div class="cart_block">
-                <img src="https://images.wsj.net/im-191342?width=860&size=1.5&pixel_ratio=2" alt="photo of burger" width="200px">
-                <h3>Bryansk set Set</h3>
-                <p>Price: 80$</p>
-                <p>Burger with mini-cutlet of marbled beef with mushroom stew and cucumbers + French fries + Coca Cola 500 ml</p>
-                <div class="edit">
-                    <button class="button-edit" type="submit">-</button>
-                    <p class="button-edit">1</p>
-                    <button class="button-edit" type="submit">+</button>
+                <div class="footer-content footer-center">
+                    <a href="./10.html" class="footer-text">
+                        FAQ
+                    </a>
                 </div>
-        
+                <div class="footer-content footer-right">
+                    <a href="./9.html" class="footer-text">
+                        Survey
+                    </a>
+                </div>                
             </div>
-        </li>
-    </ul>
-    <div>
-        <button type="submit" class="button-order">
-            Order products for 130$
-        </button>
-    </div>
+        </footer>
+
+    
 </body>
 </html>
