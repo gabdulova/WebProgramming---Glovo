@@ -64,8 +64,7 @@
     margin-top: 0;
     margin-bottom: 50px;
     padding-left: 40px;
-    padding-bottom: 22.5px;
-    background-color: #FFC244FF;
+    padding: 11.25px 5%;
 }
 .page-circle-icon {
     width: 180px;
