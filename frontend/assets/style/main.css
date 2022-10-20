@@ -5,12 +5,10 @@ body {
     margin: 0;
 }
 .wrapper {
-    scroll-behavior: smooth;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
     display: grid;
     grid-template-rows: auto 1fr auto;
+    height: 100vh;
+    scroll-behavior: smooth;
 }
 header {
     height: 104px;
