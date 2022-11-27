@@ -15,6 +15,13 @@
 .login-form-input {
     border: none;
 }
+.register-form-content {
+    display: grid;
+    height: 100%;
+    width: 85%;
+    padding: 0% 7.5%;
+    grid-template-rows: repeat(8, 1fr);
+}
 .login-form-content {
     display: grid;
     height: 100%;
@@ -33,8 +40,22 @@
     border-bottom: 1px solid #DADADA;
     border-radius: 10px 10px 0px 0px;
 }
+.register-form-item2 {
+    grid-row: 3 / 4;
+    border-bottom: 1px solid #DADADA;
+    border-radius: 10px 10px 0px 0px;
+}
+.register-form-item3 {
+    grid-row: 4 / 5;
+    border-bottom: 1px solid #DADADA;
+}
 .login-form-item3 {
     grid-row: 4 / 5;
+    border-top: 1px solid #DADADA;
+    border-radius: 0px 0px 10px 10px;
+}
+.register-form-item4 {
+    grid-row: 5 / 6;
     border-top: 1px solid #DADADA;
     border-radius: 0px 0px 10px 10px;
 }
@@ -46,14 +67,47 @@
     font-weight: 700;
     font-size: 18px;
     color: #FFFFFF;
+    transition: background-color 0.2s;
 }
 .login-form-item4:hover {
     cursor: pointer;
     background-color: #00846BFF;
 }
+.register-form-item5 {
+    grid-row: 7 / 8;
+    border-radius: 10px;
+    border: none;
+    background-color: #00A082FF;
+    font-weight: 700;
+    font-size: 18px;
+    color: #FFFFFF; 
+    transition: background-color 0.2s;   
+}
+.register-form-item5:hover {
+    cursor: pointer;
+    background-color: #00846BFF;
+}
+.login-form-item5 {
+    grid-row: 7 / 8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.register-form-item6 {
+    grid-row: 8 / 9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .login-form-input {
     font-size: 18px;
     padding: 1px 7px;
+}
+.login-form-link {
+    color: blue;
+}
+.login-form-link:visited {
+    color: blue ;
 }
 .page-content-wrapper {
     display: flex;
@@ -69,7 +123,6 @@
 }
 .page-circle-icon {
     width: 180px;
-
 }
 .page-link {
     display: flex;

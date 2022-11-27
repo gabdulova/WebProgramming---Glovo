@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION["login"])) {
+    header("location: login.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,52 +12,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="icon" href="./assets/img/browser icon.png">
     <link rel="stylesheet" href="./assets/style/main.css">
-    <link rel="stylesheet" href="./assets/style/main_Yera.css">
 
-    <title>Groceries</title>
+    <title>Error</title>
 </head>
 <body>
     <div class="wrapper">
         <header>
             <div id="header-wrapper">
                 <div class="header-left">
-                    <a href="./2.html">
+                    <a href="./main.php">
                         <img id="header-logo" src="./assets/img/logo_green.png" alt="Glovo Logo Green" >
                     </a>
                 </div>
                 <div class="header-right">
                     <form action="./7.html">
-                        <button type="submit" class="button-cart">
-                            Cart
-                        </button>
+                        <button type="submit" class="button-cart">Cart</button>
                     </form>
+                </div>
+                <div class="header-far-right">
+                    <a  class="header-logout" href="../backend/logout.php">Log Out</a>
                 </div>
             </div>
         </header>
 
-        <div class="page-wrapper">
-            <h1 class="page-text">
-                Shops
+        <div>
+            <h1>
+                Error occured
             </h1>
-            <div class="page-content-wrapper">
-                <a href="" class="page-link rectangle-link">
-                    <div class="rectangle-link-background" style="background-image: url(./assets/img/mgm.jpg);">
-                        <span class="page-rectangle-text">Magnum</span>
-                    </div>
-                </a>
-                <a href="" class="page-link rectangle-link">
-                    <div class="rectangle-link-background" style="background-image: url(./assets/img/grn.jpg);">
-                        <span class="page-rectangle-text">Green</span>
-                    </div>
-                </a>
-                <a href="" class="page-link rectangle-link">
-                    <div class="rectangle-link-background" style="background-image: url(./assets/img/rms.jpg);">
-                        <span class="page-rectangle-text">Ramstore</span>
-                    </div>
-                </a>
-            </div>
+            <p>
+                <?php echo $_REQUEST["err"] ?>
+            </p>
         </div>
 
         <footer>

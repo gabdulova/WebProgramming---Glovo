@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (isset($_SESSION["login"])) {
+    header("location: main.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,14 +16,14 @@
     <link rel="stylesheet" href="./assets/style/main.css">
     <link rel="stylesheet" href="./assets/style/main_Yera.css">
 
-    <title>Login Page</title>
+    <title>Register Page</title>
 </head>
 <body>
     <div class="wrapper">
         <header>
             <div id="header-wrapper">
                 <div class="header-left">
-                    <a href="./2.html">
+                    <a href="./main.php">
                         <img id="header-logo" src="./assets/img/logo_green.png" alt="Glovo Logo Green" >
                     </a>
                 </div>
@@ -25,17 +32,21 @@
          
         <div class="login-form">
             <div class="login-form-wrapper">
-                <form action="./2.html" method="post" class="login-form-content">
+                <form action="../backend/registration_process.php" method="post" class="register-form-content">
                     <div class="login-form-item1">
                         <h2>
-                            SIGN IN TO YOUR ACCOUNT
+                            SIGN UP
                         </h2>
                     </div>
-                    <input class="login-form-item2 login-form-input" type="email" name="email" class="login-form-input" placeholder="Type your username">
-                    <input class="login-form-item3 login-form-input" type="password" name="password" class="login-form-input" placeholder="Type your password">
-                    <button class="login-form-item4" type="submit">
-                        SIGN IN
+                    <input class="register-form-item2 login-form-input" type="text" name="name" class="login-form-input" placeholder="Enter your name">
+                    <input class="register-form-item3 login-form-input" type="email" name="email" placeholder="Enter your email">
+                    <input class="register-form-item4 login-form-input" type="password" name="password" placeholder="Enter your password">
+                    <button class="register-form-item5" type="submit" name="submit">
+                        CREATE ACCOUNT
                     </button>
+                    <div class="register-form-item6">
+                        <a class="login-form-link" href="./login.php">Already have an account?</a>
+                    </div>
                 </form>
             </div>
         </div>

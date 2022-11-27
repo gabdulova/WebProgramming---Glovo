@@ -1,3 +1,12 @@
+<?php
+session_start();
+if (!isset($_SESSION["login"])) {
+    header("location: login.php");
+}
+
+include("../backend/category_process.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,47 +18,45 @@
     <link rel="stylesheet" href="./assets/style/main.css">
     <link rel="stylesheet" href="./assets/style/main_Yera.css">
 
-    <title>Gifts</title>
+    <title>Main Page</title>
 </head>
 <body>
     <div class="wrapper">
         <header>
             <div id="header-wrapper">
                 <div class="header-left">
-                    <a href="./2.html">
+                    <a href="./main.php">
                         <img id="header-logo" src="./assets/img/logo_green.png" alt="Glovo Logo Green" >
                     </a>
                 </div>
+                <div class="header-center">
+                    <input class="header-search" type="text" placeholder="Search...">
+                </div>
                 <div class="header-right">
-                    <form action="./7.html">
-                        <button type="submit" class="button-cart">
-                            Cart
-                        </button>
-                    </form>
+                    <a class="header-logout" href="./7.html">Cart</a>
+                </div>
+                <div class="header-far-right">
+                    <a  class="header-logout" href="../backend/logout_process.php">Log Out</a>
                 </div>
             </div>
         </header>
 
         <div class="page-wrapper">
             <h1 class="page-text">
-                Pharmacy
+                Categories
             </h1>
             <div class="page-content-wrapper">
-                <a href="" class="page-link rectangle-link">
-                    <div class="rectangle-link-background" style="background-image: url(./assets/img/sdh.jpg);">
-                        <span class="page-rectangle-text">Sadykhan</span>
-                    </div>
+
+            <?php
+                foreach ($result as $row) {
+            ?>
+                <a href=<?php echo "./shop.php?cr=" . $row["category_id"] ?> class="page-link circle-link">
+                    <img class="page-circle-icon" src="./assets/img/<?php echo $row["img_url"] ?>" alt="Fast food">
+                    <span class="page-circle-text"><?php echo $row["name"] ?></span>
                 </a>
-                <a href="" class="page-link rectangle-link">
-                    <div class="rectangle-link-background" style="background-image: url(./assets/img/bsr.jpg);">
-                        <span class="page-rectangle-text">Biosphera</span>
-                    </div>
-                </a>
-                <a href="" class="page-link rectangle-link">
-                    <div class="rectangle-link-background" style="background-image: url(./assets/img/erp.jpg);">
-                        <span class="page-rectangle-text">Europharma</span>
-                    </div>
-                </a>
+            <?php
+                }
+            ?>
             </div>
         </div>
 
@@ -76,3 +83,4 @@
     </div>
 </body>
 </html>
+

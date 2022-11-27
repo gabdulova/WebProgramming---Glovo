@@ -1,3 +1,17 @@
+<?php
+session_start();
+if (!isset($_SESSION["login"])) {
+    header("location: login.php");
+}
+if (!isset($_REQUEST["cr"])) {
+    header("location: main.php");
+}
+
+$category = $_REQUEST["cr"];
+include("../backend/shop_process.php");
+// echo json_encode($result);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,16 +30,18 @@
         <header>
             <div id="header-wrapper">
                 <div class="header-left">
-                    <a href="./2.html">
+                    <a href="./main.php">
                         <img id="header-logo" src="./assets/img/logo_green.png" alt="Glovo Logo Green" >
                     </a>
                 </div>
+                <div class="header-center">
+                    <input class="header-search" type="text" placeholder="Search...">
+                </div>
                 <div class="header-right">
-                    <form action="./7.html">
-                        <button type="submit" class="button-cart">
-                            Cart
-                        </button>
-                    </form>
+                    <a class="header-logout" href="./7.html">Cart</a>
+                </div>
+                <div class="header-far-right">
+                    <a  class="header-logout" href="../backend/logout_process.php">Log Out</a>
                 </div>
             </div>
         </header>
@@ -35,21 +51,18 @@
                 Restaurants
             </h1>
             <div class="page-content-wrapper">
-                <a href="./4.html" class="page-link rectangle-link">
-                    <div class="rectangle-link-background" style="background-image: url(./assets/img/mcd.jpg);">
-                        <span class="page-rectangle-text">McDonald's</span>
+
+            <?php
+                foreach ($result as $row) {
+            ?>
+                <a href="./catalogue.php?sh=<?php echo $row["shop_id"] ?>" class="page-link rectangle-link">
+                    <div class="rectangle-link-background" style="background-image: url(./assets/img/<?php echo $row["img_url"]?>);">
+                        <span class="page-rectangle-text"><?php echo $row["name"] ?></span>
                     </div>
                 </a>
-                <a href="" class="page-link rectangle-link">
-                    <div class="rectangle-link-background" style="background-image: url(./assets/img/kfc.png);">
-                        <span class="page-rectangle-text">KFC</span>
-                    </div>
-                </a>
-                <a href="" class="page-link rectangle-link">
-                    <div class="rectangle-link-background" style="background-image: url(./assets/img/bhd.jpg);">
-                        <span class="page-rectangle-text">Bahandi</span>
-                    </div>
-                </a>
+            <?php
+                }
+            ?>
             </div>
         </div>
 
