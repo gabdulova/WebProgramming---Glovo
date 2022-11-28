@@ -30,7 +30,7 @@ if (!isset($_SESSION["login"])) {
                 </div>
                 <div class="header-right">
                     <a class="header-logout" href="./7.html">Cart</a>
-                </div>>
+                </div>
                 <div class="header-far-right">
                     <a  class="header-logout" href="../backend/logout_process.php">Log Out</a>
                 </div>

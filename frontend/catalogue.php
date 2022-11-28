@@ -1,3 +1,16 @@
+<?php
+session_start();
+if (!isset($_SESSION["login"])) {
+    header("location: login.php");
+}
+if (!isset($_REQUEST["sh"])) {
+    header("location: shop.php");
+}
+
+$shop = $_REQUEST["sh"];
+include("../backend/catalogue_process.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +20,7 @@
     <link rel="icon" href="./assets/img/browser icon.png">
     <link rel="stylesheet" href="./assets/style/main.css">
     <link rel="stylesheet" href="./assets/style/main_Binaz.css">
-    <title>McDonald's: Burgers, Fries & More</title>
+    <title><?php echo $shop_name[0]?></title>
 </head>
 <body>
     <div class="wrapper">
@@ -23,7 +36,7 @@
                 </div>
                 <div class="header-right">
                     <a class="header-logout" href="./7.html">Cart</a>
-                </div>>
+                </div>
                 <div class="header-far-right">
                     <a  class="header-logout" href="../backend/logout_process.php">Log Out</a>
                 </div>
@@ -36,28 +49,22 @@
                     <h2>Categories</h2>
                 </div>
                 <div class="menu-container">
+
+                <?php
+                foreach ($result as $row) {
+                ?>
                     <div class="box">
                         <div class="box-img">
-                            <a href="./5.html">
-                                <img src="./assets/img/mccombo.png" alt="">
+                            <a href=<?php echo "./products.php?cg=" . $row["catalogue_id"] ?>>
+                                <img src=<?php echo "./assets/img/" . $row["img_url"] ?> alt="">
                             </a>
-                        </div>
-                        <h2>McCombo</h2>
+                        </div> 
+                        <h2><?php echo $row["name"] ?></h2>
                     </div>
+                <?php
+                    }
+                ?>
 
-                    <div class="box">
-                        <div class="box-img">
-                                <img src="./assets/img/drink.png" alt="">
-                        </div>
-                        <h2>Drinks</h2>
-                    </div>
-
-                    <div class="box">
-                        <div class="box-img">
-                                <img src="./assets/img/onemeal.png" alt="">
-                        </div>
-                        <h2>Individual Positions</h2>
-                    </div>
                 </div>
             </div>
         </div>

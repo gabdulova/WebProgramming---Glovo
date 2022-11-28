@@ -1,3 +1,16 @@
+<?php
+session_start();
+if (!isset($_SESSION["login"])) {
+    header("location: login.php");
+}
+if (!isset($_REQUEST["pr"])) {
+    header("location: shop.php");
+}
+
+$product_id = $_REQUEST["pr"];
+include("../backend/product_description_process.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +21,7 @@
     <link rel="stylesheet" href="./assets/style/main.css">
     <link rel="stylesheet" href="./assets/style/main_Binaz.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <title>McCombo Big Mac</title>
+    <title><?php echo $result[0]["name"] ?></title>
 </head>
 <div>
     <div class="wrapper">
@@ -24,7 +37,7 @@
                 </div>
                 <div class="header-right">
                     <a class="header-logout" href="./7.html">Cart</a>
-                </div>>
+                </div>
                 <div class="header-far-right">
                     <a  class="header-logout" href="../backend/logout_process.php">Log Out</a>
                 </div>
@@ -33,17 +46,15 @@
 
         <div class="box2">
             <div class="img">
-                <a href="./6.html">
-                    <img src="./assets/img/3combo.png" alt="">
+                <a href=<?php echo "./product_id.php?pr=" . $product_id ?>>
+                    <img src=<?php echo "./assets/img/" . $result[0]["img_url"] ?> alt="">
                 </a>
             </div>
             <div class="content">
-                <h2>McCombo Big Mac</h2>
-                <span>1950 ₸</span>
+                <h2><?php echo $result[0]["name"] ?></h2>
+                <span><?php echo $result[0]["price"] ?>₸</span>
                 <a href="./7.html" class="btn"><i class='bx bx-cart-add'></i></a>
-                <p>Large sandwich with two steaks on a special Big Mac bun with refined sauce, standard serving of roasted and 
-                    lightly salted French fries, carbonated beverage Coca-Cola, Coca-Cola Zero, Fanta, Sprite 0.4 l. or tea black, 
-                    tea 0.2 l and sauce of your choice.</p>
+                <p><?php echo $result[0]["description"] ?></p>
             </div>
         </div>
 

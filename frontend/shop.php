@@ -23,7 +23,7 @@ include("../backend/shop_process.php");
     <link rel="stylesheet" href="./assets/style/main.css">
     <link rel="stylesheet" href="./assets/style/main_Yera.css">
 
-    <title>Fast Food</title>
+    <title><?php echo $category == "1" ? "Fast Food" : ($category == "2" ? "Groceries" : "Pharmacy"); ?></title>
 </head>
 <body>
     <div class="wrapper">

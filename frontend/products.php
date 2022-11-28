@@ -1,3 +1,16 @@
+<?php
+session_start();
+if (!isset($_SESSION["login"])) {
+    header("location: login.php");
+}
+if (!isset($_REQUEST["cg"])) {
+    header("location: shop.php");
+}
+
+$catalogue = $_REQUEST["cg"];
+include("../backend/products_process.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +21,7 @@
     <link rel="stylesheet" href="./assets/style/main.css">
     <link rel="stylesheet" href="./assets/style/main_Binaz.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <title>McCombo</title>
+    <title><?php echo $catalogue_name[0]?></title>
 </head>
 <body>
     <div class="wrapper">
@@ -24,7 +37,7 @@
                 </div>
                 <div class="header-right">
                     <a class="header-logout" href="./7.html">Cart</a>
-                </div>>
+                </div>
                 <div class="header-far-right">
                     <a  class="header-logout" href="../backend/logout_process.php">Log Out</a>
                 </div>
@@ -34,38 +47,25 @@
         <div class="main-page-wrapper">
             <div class="main-page-content-wrapper">
                 <div class="heading">
-                    <h2>McCombo Positions</h2>
+                    <h2><?php echo $catalogue_name[0]?> Positions</h2>
                 </div>
                 <div class="menu-container">
+                    
+                <?php
+                foreach ($result as $row) {
+                ?>
                     <div class="box">
                         <div class="box-img">
-                            <a href="./6.html">
-                                <img src="./assets/img/3combo.png" alt="">
+                            <a href=<?php echo "./product_id.php?pr=" . $row["product_id"] ?>>
+                                <img src=<?php echo "./assets/img/" . $row["img_url"] ?> alt="">
                             </a>
                         </div>
-                        <h2>McCombo Big Mac</h2>
-                        <span>1950 ₸</span>
-                        <i class='bx bx-plus-circle bx-flip-vertical' undefined ></i>
+                        <h2><?php echo $row["name"]?></h2>
+                        <span><?php echo $row["price"] ?>₸</span>
                     </div>
-
-                    <div class="box">
-                        <div class="box-img">
-                                <img src="./assets/img/1combo.png" alt="">
-                        </div>
-                        <h2>McCombo Double CheeseBurger</h2>
-                        <span>1800 ₸</span>
-                        <i class='bx bx-plus-circle bx-flip-vertical' undefined ></i>
-                    </div>
-
-                    <div class="box">
-                        <div class="box-img">
-                            <img src="./assets/img/2combo.png" alt="">
-                        </div>
-                        <h2>McCombo McChicken</h2>
-                        <span>1950 ₸</span>
-                        <i class='bx bx-plus-circle bx-flip-vertical' undefined ></i>
-                    </div>
-
+                <?php
+                    }
+                ?>
                     
                 </div>
             </div>
