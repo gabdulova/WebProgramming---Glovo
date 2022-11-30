@@ -57,7 +57,7 @@ if (isset($_SESSION["login"])) {
                     <img src="./assets/img/glovo-white.svg" alt="Glovo Logo White">
                 </div>
                 <div class="footer-content footer-center">
-                    <a href="./10.html" class="footer-text">
+                    <a href="./survey.php" class="footer-text">
                         FAQ
                     </a>
                 </div>

@@ -61,7 +61,7 @@ if (isset($_SESSION["login"])) {
                     </a>
                 </div>
                 <div class="footer-content footer-right">
-                    <a href="./9.html" class="footer-text">
+                    <a href="./survey.php" class="footer-text">
                         Survey
                     </a>
                 </div>                

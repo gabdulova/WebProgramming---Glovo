@@ -4,7 +4,7 @@ if (!isset($_SESSION["login"])) {
     header("location: login.php");
 }
 include("../backend/cart_process.php");
-if(count($_SESSION['cart'])==0){
+if((isset($_SESSION['cart']) && count($_SESSION['cart'])==0)||(!isset($_SESSION['cart']))){
     $total_price=0;
 }
 ?>
@@ -35,7 +35,7 @@ if(count($_SESSION['cart'])==0){
                 <h2> <a href="./main.php"><img src="./assets/img/go_back_photo.png" alt="" width="20px"></a> Information about order</h2>
                 <h1>
                 <?php 
-                if(count($_SESSION['cart'])>0){
+                if(isset($_SESSION['cart']) && count($_SESSION['cart'])>0){
                     echo $shop["name"];
                 }else{
                     echo "There is no added products...";
@@ -46,7 +46,7 @@ if(count($_SESSION['cart'])==0){
             <div class="cart-wrapper">
                 <ul>
                 <?php
-                if(isset($_SESSION['cart'])){
+                if(isset($_SESSION['cart']) && isset($_SESSION['cart'])){
                     foreach ($_SESSION['cart'] as $key=>$value) {
                         $p_id=$value['id'];
                 
@@ -109,7 +109,7 @@ if(count($_SESSION['cart'])==0){
                     </a>
                 </div>
                 <div class="footer-content footer-right">
-                    <a href="./9.html" class="footer-text">
+                    <a href="./survey.php" class="footer-text">
                         Survey
                     </a>
                 </div>                

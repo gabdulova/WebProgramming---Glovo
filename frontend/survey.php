@@ -1,3 +1,17 @@
+<?php
+session_start();
+if (!isset($_SESSION["login"])) {
+    header("location: login.php");
+}
+if(isset($_POST["q1"]) || isset($_POST["q2"]) || isset($_POST["q3"]) || isset($_POST["q4"]) || isset($_POST["q5"]) || isset($_POST["q6"]) || isset($_POST["q7"]) || isset($_POST["q8"])){
+    include("../backend/survey_process.php");
+    $res=true;
+    $message="Thank you for taking the survey! It will help us to improve the quality of service!!";
+}else{
+    $res=false;
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +41,8 @@
         <div class="block-survey-wrapper">
             <div class="survey-block">
                 <h1>Take the survey and help Glovo become better!</h1>
-            <form class="survey-content" action="./2.html" method="post">
+            <?php if(!$res){?>
+            <form class="survey-content" action="./survey.php" method="post">
                     <label for="q1">
                         1) How much do you rate the quality of product delivery?
                     </label> <br>
@@ -78,6 +93,11 @@
                     
                     <input class="button-submit-survey" type="submit" value="Send">
             </form>
+            <?php }?>
+            <?php if($res){
+                echo "<h4>$message</h4>";
+            }    
+            ?>
             </div>
         </div>
 
@@ -90,7 +110,7 @@
                     </a>
                 </div>
                 <div class="footer-content footer-center">
-                    <a href="./10.html" class="footer-text">
+                    <a href="./survey.php" class="footer-text">
                         FAQ
                     </a>
                 </div>

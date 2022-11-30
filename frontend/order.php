@@ -1,11 +1,40 @@
 <?php
 session_start();
+include("../backend/config.php");
 if (!isset($_SESSION["login"])) {
     header("location: login.php");
 }
+$message="";
+    if(isset($_GET['order_id']) && isset($_GET['user_id'])){
+        if($_GET['order_id']==-1){
+            $message="You need to choose product to order!";
+        }else{
+            $a=$_GET['order_id'];
+            $b=$_GET['user_id'];
+            $query = mysqli_query($mysqli, "INSERT INTO `order`(order_id, user_id, product_id) VALUES (null,$b,$a)");
+            if ($query) {
+                unset($_SESSION['cart']);
+                header("location:./main.php");
+            } else {
+                header("location:./error.php?err=unsuccessful%20sign%20up");
+            }
+        }
+    
+    }
+
+
 include("../backend/cart_process.php");
-if(count($_SESSION['cart'])==0){
+if(isset($_SESSION['cart']) && count($_SESSION['cart'])==0){
     $total_price=0;
+}
+$user_id=$_SESSION['login'];
+if(isset($_SESSION['cart']) && count($_SESSION['cart'])>0){
+    foreach($_SESSION['cart'] as $k=>$v){
+        $order_id=$v['id'];
+        break;
+    }
+}else{
+    $order_id=-1;
 }
 
 ?>
@@ -88,6 +117,8 @@ if(count($_SESSION['cart'])==0){
                 </div>
                 <?php
                     }
+                }else{
+                    $total_price=0;
                 }
                 ?>
                 <div>
@@ -95,7 +126,10 @@ if(count($_SESSION['cart'])==0){
                         <?php echo"Total: $total_price ₸" ?>
                     </h4>
                 </div>
-                <a href="./2.html"><input class="button-confirm" type="submit" value="Confirm the order"></a>
+                <form action=<?php echo"./order.php?order_id=$order_id&user_id=$user_id"?> method="POST">
+                    <input class="button-confirm" type="submit" value="Confirm the order">
+                </form>
+                <?php echo "<p style='color:red;'>$message</p>"?>
 
         </div>
         </div>
@@ -109,7 +143,7 @@ if(count($_SESSION['cart'])==0){
                     </a>
                 </div>
                 <div class="footer-content footer-center">
-                    <a href="./10.html" class="footer-text">
+                    <a href="./survey.php" class="footer-text">
                         FAQ
                     </a>
                 </div>

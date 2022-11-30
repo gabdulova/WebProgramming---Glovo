@@ -83,7 +83,7 @@ include("../backend/catalogue_process.php");
                     </a>
                 </div>
                 <div class="footer-content footer-right">
-                    <a href="./9.html" class="footer-text">
+                    <a href="./survey.php" class="footer-text">
                         Survey
                     </a>
                 </div>                

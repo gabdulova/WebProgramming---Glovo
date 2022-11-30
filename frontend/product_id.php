@@ -66,7 +66,7 @@ include("../backend/product_description_process.php");
                     </a>
                 </div>
                 <div class="footer-content footer-center">
-                    <a href="./10.html" class="footer-text">
+                    <a href="./survey.php" class="footer-text">
                         FAQ
                     </a>
                 </div>
