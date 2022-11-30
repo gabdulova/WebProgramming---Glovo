@@ -1,3 +1,14 @@
+<?php
+session_start();
+if (!isset($_SESSION["login"])) {
+    header("location: login.php");
+}
+include("../backend/cart_process.php");
+if(count($_SESSION['cart'])==0){
+    $total_price=0;
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,37 +56,43 @@
             <img src="./assets/img/cart_confirm_photo1.png" alt="" style="float:right; width:70px">
             <h2>Summary information</h2>
             
+            <?php
+                if(isset($_SESSION['cart'])){
+                    foreach ($_SESSION['cart'] as $key=>$value) {
+                        $p_id=$value['id'];
+                        $name=$value["name"];
+                        $price=$value["price"];
+                        $desc=$value["description"];
+                        $q=$value["quant"];
+                
+            ?>
             <div class="summary-product-content">
+            
                     <div class="summary-product-block edit">
-                        <button class="button-edit" type="submit">-</button>
-                        <p>1</p>
-                        <button class="button-edit" type="submit">+</button>
+                        <a href=<?php echo "./order.php?id=$p_id&action=dec"?>>
+                        <button class="button-edit" type="button">-</button>
+                        </a>
+                        <?php 
+                        echo "<p>$q</p>"
+                        ?>
+                        <a href=<?php echo "./order.php?id=$p_id&action=inc"?>>
+                        <button class="button-edit" type="button">+</button>
+                        </a>
                     </div>
                     <div class="summary-product-block">
-                    <p>McCombo Big Mac</p>
+                    <?php echo"<p>$name</p>" ?>
                     </div>
                     <div class="summary-product-block">
-                    <p>Price: 1950 ₸</p>
+                    <?php echo"<p>$price</p>"?>
                     </div>
                 </div>
-
-                <div class="summary-product-content">
-                        <div class="summary-product-block edit">
-                            <button class="button-edit" type="submit">-</button>
-                            <p>1</p>
-                            <button class="button-edit" type="submit">+</button>
-                            
-                        </div>
-                        <div class="summary-product-block">
-                            <p>McCombo Chicken Tasty</p>
-                            </div>
-                            <div class="summary-product-block">
-                            <p>Price: 2600 ₸</p>
-                            </div>
-                </div>
+                <?php
+                    }
+                }
+                ?>
                 <div>
                     <h4>
-                        Total: 4550 ₸
+                        <?php echo"Total: $total_price ₸" ?>
                     </h4>
                 </div>
                 <a href="./2.html"><input class="button-confirm" type="submit" value="Confirm the order"></a>

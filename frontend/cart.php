@@ -1,3 +1,13 @@
+<?php
+session_start();
+if (!isset($_SESSION["login"])) {
+    header("location: login.php");
+}
+include("../backend/cart_process.php");
+if(count($_SESSION['cart'])==0){
+    $total_price=0;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,51 +32,63 @@
         </header>
         <div class="page-cart-wrapper">
             <div class="heading-wrapper">
-                <h2> <a href="javascript:history.back()"><img src="./assets/img/go_back_photo.png" alt="" width="20px"></a> Information about order</h2>
-                <h1>McDonald's</h1>
+                <h2> <a href="./main.php"><img src="./assets/img/go_back_photo.png" alt="" width="20px"></a> Information about order</h2>
+                <h1>
+                <?php 
+                if(count($_SESSION['cart'])>0){
+                    echo $shop["name"];
+                }else{
+                    echo "There is no added products...";
+                }
+                ?>
+                </h1>
             </div>
             <div class="cart-wrapper">
                 <ul>
+                <?php
+                if(isset($_SESSION['cart'])){
+                    foreach ($_SESSION['cart'] as $key=>$value) {
+                        $p_id=$value['id'];
+                
+                ?>
                     <li>
                         <div class="cart_block">
+                            
+                            <a href=<?php echo "./cart.php?id=$p_id&action=del"?>>
                             <button class="button-delete" type="button">X</button>
-                                <img class="cart-image" src="./assets/img/cart_photo1.png" alt="photo of burger" >
-                            <h3>McCombo Chicken Tasty</h3>
-                            <p>Price: 2600 ₸</p>
-                            <p>
-                            Large and delicious chicken cutlet in breadcrumbs, tender bun, tomato slices, lettuce, onion, Emmental cheese and spicy Grilled sauce. 
-                            A standard serving of crispy French Fries, a drink and a sauce of your choice.
-                            </p>
+                            </a>
+                                <img class="cart-image" src="<?php echo "./assets/img/".$value["img_url"]?>" alt="photo of burger" >
+                            <?php
+                            $name=$value["name"];
+                            $price=$value["price"];
+                            $desc=$value["description"];
+                            $q=$value["quant"];
+                            echo "<h3>$name</h3>";
+                            echo "<p>$price</p>";
+                            echo "<p>$desc</p>";
+                            ?>
                             <div class="edit">
+                                <a href=<?php echo "./cart.php?id=$p_id&action=dec"?>>
                                 <button class="button-edit" type="button">-</button>
-                                <p>1</p>
+                                </a>
+                                <?php 
+                                echo "<p>$q</p>"
+                                ?>
+                                <a href=<?php echo "./cart.php?id=$p_id&action=inc"?>>
                                 <button class="button-edit" type="button">+</button>
+                                </a>
                             </div>
-                            <!-- <button class="button-delete" type="button">X</button> -->
                     
                         </div>
                     </li>
-                    <li>
-                        <div class="cart_block">
-                            <button class="button-delete" type="button">X</button>
-                                <img class="cart-image" src="./assets/img/cart_photo2.png" alt="photo of burger">
-                            <h3>McCombo Big Mac</h3>
-                            <p>Price: 1950 ₸</p>
-                            <p>Large sandwich with two steaks on a special Big Mac bun with refined sauce, standard serving of roasted and lightly salted French fries, 
-                            carbonated beverage Coca-Cola, Coca-Cola Zero, Fanta, Sprite 0.4 l. or tea black, tea 0.2 l and sauce of your choice.
-                            </p>
-                            <div class="edit">
-                                <button class="button-edit" type="submit">-</button>
-                                <p >1</p>
-                                <button class="button-edit" type="submit">+</button>
-                            </div>
-                            
-                        </div>
-                    </li>
+                    <?php
+                    }
+                    }
+                    ?>
                 </ul>
                 <div>
-                    <form class="form-order" action="./8.html">
-                        <input type="submit" class="button-order" value="Order products for 130$">
+                    <form class="form-order" action="./order.php">
+                        <button type="submit" class="button-order" ><?php echo "Order products for $total_price ₸"?></button>
                     </form>
                 </div>
             </div>

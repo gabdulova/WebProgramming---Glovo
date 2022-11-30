@@ -26,7 +26,7 @@ if (!isset($_SESSION["login"])) {
                     </a>
                 </div>
                 <div class="header-right">
-                    <form action="./7.html">
+                    <form action="./cart.php">
                         <button type="submit" class="button-cart">Cart</button>
                     </form>
                 </div>

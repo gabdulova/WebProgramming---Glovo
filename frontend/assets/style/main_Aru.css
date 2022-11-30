@@ -65,6 +65,7 @@ li {
     width: 20%;
     font-size: 1.2em;
     border: none;
+    overflow: visible;
 }
 .button-order:hover{
     background-color: rgb(0, 132, 107);

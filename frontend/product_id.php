@@ -36,7 +36,7 @@ include("../backend/product_description_process.php");
                     <input class="header-search" type="text" placeholder="Search...">
                 </div>
                 <div class="header-right">
-                    <a class="header-logout" href="./7.html">Cart</a>
+                    <a class="header-logout" href="./cart.php">Cart</a>
                 </div>
                 <div class="header-far-right">
                     <a  class="header-logout" href="../backend/logout_process.php">Log Out</a>
@@ -53,7 +53,7 @@ include("../backend/product_description_process.php");
             <div class="content">
                 <h2><?php echo $result[0]["name"] ?></h2>
                 <span><?php echo $result[0]["price"] ?>₸</span>
-                <a href="./7.html" class="btn"><i class='bx bx-cart-add'></i></a>
+                <a href=<?php echo "./cart.php?id=$product_id&action=add"?> class="btn"><i class='bx bx-cart-add'></i></a>
                 <p><?php echo $result[0]["description"] ?></p>
             </div>
         </div>
