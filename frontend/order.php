@@ -27,7 +27,7 @@ include("../backend/cart_process.php");
 if(isset($_SESSION['cart']) && count($_SESSION['cart'])==0){
     $total_price=0;
 }
-$user_id=$_SESSION['login'];
+$user_id=$_SESSION['user_id'];
 if(isset($_SESSION['cart']) && count($_SESSION['cart'])>0){
     foreach($_SESSION['cart'] as $k=>$v){
         $order_id=$v['id'];

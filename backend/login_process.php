@@ -13,6 +13,7 @@ if (isset($_POST["submit"])) {
 
     if ($result) {
         $_SESSION["login"] = true;
+        $_SESSION["user_id"] = $result["user_id"];
         header("location:../frontend/main.php");
     }
 }
