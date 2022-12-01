@@ -115,7 +115,7 @@ if(isset($_POST["q1"]) || isset($_POST["q2"]) || isset($_POST["q3"]) || isset($_
                     </a>
                 </div>
                 <div class="footer-content footer-right">
-                    <a href="./9.html" class="footer-text">
+                    <a href="./survey.php" class="footer-text">
                         Survey
                     </a>
                 </div>                
